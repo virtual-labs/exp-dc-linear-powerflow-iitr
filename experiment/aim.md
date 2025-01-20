@@ -1,1 +1,1 @@
-### Aim of the experiment
+#### The aim of this lab experiment is to perform the power flow analysis using the DC (Linear) method.
