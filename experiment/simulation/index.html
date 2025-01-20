@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DC Power Flow</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-		<!-- Your code goes here-->
+<h1>DC (Linear) Power Flow</h1>
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
-</body>
-</html>
+<div class="container">
+  <!-- Column 1: Bus Data and Line Data -->
+  <div class="column">
+    <h2>Bus Data</h2>
+    <label for="numBuses">Enter the number of buses:</label>
+    <input type="number" id="numBuses">
+    <button onclick="generateBusTable()">Generate Bus Table</button>
+    <button onclick="autofillFiveBusNetwork()">Autofill Bus Data: IEEE 5-Bus</button>
+    <button onclick="autofillFourteenBusNetwork()">Autofill Bus Data: IEEE 14-Bus</button>
+    <div id="busTableContainer"></div>
+
+    <h2>Line Data</h2>
+    <label for="numLines">Enter the number of lines:</label>
+    <input type="number" id="numLines">
+    <button onclick="generateLineTable()">Generate Line Table</button>
+    <button onclick="autofillSixLines()">Autofill Line Data: IEEE 5-Bus</button>
+    <button onclick="autofillTwentyLines()">Autofill Line Data: IEEE 14-Bus</button>
+    <div id="lineTableContainer"></div>
+  </div>
+
+  <!-- Column 2: B Matrix and Results -->
+  <div class="column">
+    <h2>B Matrix</h2>
+    <button onclick="calculateYbus()">Calculate B-Bus Matrix for DC (Linear) Power Flow</button>
+    <div id="ybusContainer"></div>
+
+    <h2>Results</h2>
+    <button onclick="runLoadFlow()">Run DC (Linear) Power Flow</button>
+    <div id="loadFlowResults"></div>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+
+    </body>
+    </html>
