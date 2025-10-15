@@ -7,29 +7,60 @@
 <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<h1>DC (Linear) Power Flow</h1>
 
 <div class="container">
-  <!-- Column 1: Bus Data and Line Data -->
+
+  <div class="navbar">
+    <h1>DC (Linear) Power Flow</h1>
+
+    <div class="instructions">
+      <button id="openInstructions">Instructions</button>
+    </div>
+  </div>
+
+  <!-- Instructions Modal -->
+  <div id="instructionsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal"></span>
+      <div style="font-family: 'Nunito Sans', sans-serif; font-size: 20px;text-align: justify;">
+         
+        <b>STEP 1</b>: Enter the number of buses in a power system. Then, click on the <b>“Generate Bus Table”</b> and fill the details of buses i.e., Bus Type (Slack Bus = 1, PV Bus = 2, PQ Bus = 3), Voltage magnitude (pu), Angle (degree), P<sub>gen</sub> (pu), P<sub>load</sub> (pu). 
+        <br><br>
+        <b>Note:</b> Bus data for two standard IEEE bus systems are provided- (I) IEEE 5-Bus system and (II) IEEE 14-Bus system. To access the data click on the button of Autofill Bus Data: IEEE 5-Bus or Autofill Bus Data: IEEE 14-Bus. Also, make sure that the entered data is accurate. 
+        <br><br>
+        <b>STEP 2</b>: Enter the number of lines in a power system. Then, click on the <b>“Generate Line Table”</b> and fill the details of lines i.e., From Bus, To Bus, X (pu).  
+        <br>
+        <b>Note:</b> Line data for two standard IEEE bus systems are provided- (I) IEEE 5-Bus system and (II) IEEE 14-Bus system. To access the data click on the button of Autofill Line Data: IEEE 5-Bus or Autofill Line Data: IEEE 14-Bus.
+        <br><br>
+        <b>STEP 3</b>: Click on <b>“Calculate B-Bus”</b>. The values of the B-Bus matrix will be displayed.
+        <br><br>
+        <b>STEP 4</b>: Click on <b>“Run Power Flow”</b>. Buses data: Bus Type, Voltage magnitude (pu), Angle (degree) , P<sub>gen</sub> (pu), P<sub>load</sub> (pu), Line flows data: P<sub>line</sub> (pu), will be displayed.
+      </div>
+    </div>
+  </div>
+
   <div class="column">
     <h2>Bus Data</h2>
-    <label for="numBuses">Enter the number of buses:</label>
-    <input type="number" id="numBuses">
-    <button onclick="generateBusTable()">Generate Bus Table</button>
-    <button onclick="autofillFiveBusNetwork()">Autofill Bus Data: IEEE 5-Bus</button>
-    <button onclick="autofillFourteenBusNetwork()">Autofill Bus Data: IEEE 14-Bus</button>
+    <div class="input-row">
+      <label for="numBuses">Enter the number of buses:</label>
+      <input type="number" id="numBuses">
+      <button onclick="generateBusTable()">Generate Bus Table</button>
+      <button onclick="autofillFiveBusNetwork()">Autofill Bus Data: IEEE 5-Bus</button>
+      <button onclick="autofillFourteenBusNetwork()">Autofill Bus Data: IEEE 14-Bus</button>
+    </div>
     <div id="busTableContainer"></div>
 
     <h2>Line Data</h2>
-    <label for="numLines">Enter the number of lines:</label>
-    <input type="number" id="numLines">
-    <button onclick="generateLineTable()">Generate Line Table</button>
-    <button onclick="autofillSixLines()">Autofill Line Data: IEEE 5-Bus</button>
-    <button onclick="autofillTwentyLines()">Autofill Line Data: IEEE 14-Bus</button>
+    <div class="input-row">
+      <label for="numLines">Enter the number of lines:</label>
+      <input type="number" id="numLines">
+      <button onclick="generateLineTable()">Generate Line Table</button>
+      <button onclick="autofillSixLines()">Autofill Line Data: IEEE 5-Bus</button>
+      <button onclick="autofillTwentyLines()">Autofill Line Data: IEEE 14-Bus</button>
+    </div>
     <div id="lineTableContainer"></div>
   </div>
 
-  <!-- Column 2: B Matrix and Results -->
   <div class="column">
     <h2>B Matrix</h2>
     <button onclick="calculateYbus()">Calculate B-Bus Matrix for DC (Linear) Power Flow</button>
@@ -38,8 +69,25 @@
     <h2>Results</h2>
     <button onclick="runLoadFlow()">Run DC (Linear) Power Flow</button>
     <div id="loadFlowResults"></div>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+  </div>
+ <footer>&copy; 2025 Virtual Labs | IIT Roorkee</footer>
+</div>
 
-    </body>
-    </html>
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+
+<script>
+  // Instructions modal logic
+  const modal = document.getElementById("instructionsModal");
+  const btn = document.getElementById("openInstructions");
+  const span = document.getElementById("closeModal");
+
+  btn.onclick = () => { modal.style.display = "block"; }
+  span.onclick = () => { modal.style.display = "none"; }
+  window.onclick = (event) => {
+    if (event.target == modal) { modal.style.display = "none"; }
+  }
+</script>
+
+</body>
+</html>
