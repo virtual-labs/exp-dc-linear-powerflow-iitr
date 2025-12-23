@@ -1,6 +1,6 @@
 <div style="font-family: 'Nunito Sans', sans-serif; font-size: 20px;text-align: justify;">
 
-## Procedure for the DC (Linear) power flow method:
+### Procedure for the DC (Linear) power flow method:
 <b>STEP 1</b>: Enter the number of buses in a power system. Then, click on the “Generate Bus Table” and fill the details of buses i.e., Bus Type (Slack Bus = 1, PV Bus = 2, PQ Bus = 3), Voltage magnitude (pu), Angle (degree), P<sub>gen</sub> (pu), P<sub>load</sub> (pu). 
 <br>
 <br>
@@ -15,5 +15,5 @@
 <b>STEP 3</b>: Click on “Calculate B-Bus”. The values of the B-Bus matrix will be displayed.
 <br>
 <br>
-<b>STEP 4</b>: Click on “Run Power Flow”. Buses data: Bus Type, Voltage magnitude (pu), Angle (degree) , P<sub>gen</sub> (pu), Pload<sub>load</sub> (pu), Line flows data: P<sub>line</sub> (pu), will be displayed.
+<b>STEP 4</b>: Click on “Run Power Flow”. Buses data: Bus Type, Voltage magnitude (pu), Angle (degree) , P<sub>gen</sub> (pu), P<sub>load</sub> (pu), Line flows data: P<sub>line</sub> (pu), will be displayed.
 <br>
